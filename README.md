@@ -1,4 +1,4 @@
-# 🪟 Windows Assistant v1.0
+# 🪟 Windows Assistant v1.0 (Beta)
 
 A simple desktop assistant for Windows, built with Python and CustomTkinter.  
 This assistant can perform basic system tasks, open websites, and interact with desktop applications using simple commands.
