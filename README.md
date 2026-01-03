@@ -51,3 +51,7 @@ Shutdown / restart commands with confirmation prompts
 Error handling for safer execution
 
 Extensible command architecture to easily add new commands
+
+## 🖼️ Interface
+
+<img width="599" height="477" alt="image" src="https://github.com/user-attachments/assets/3282bc50-0b52-4886-905b-5a2c7e018ca2" />
