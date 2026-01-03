@@ -24,8 +24,11 @@ This assistant can perform basic system tasks, open websites, and interact with 
 
 Some example commands:
 create folder → creates a folder on Desktop
+
 open google → opens Google in the default browser
+
 open youtube → opens YouTube in the default browser
+
 help → displays available commands (planned)
 
 ##🔮 Future Updates
