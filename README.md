@@ -35,11 +35,17 @@ help → displays available commands (planned)
 
 Planned features to make the assistant more useful and professional:
 Open more applications (Notepad, Calculator, VS Code, etc.)
+
 Show system information (OS, username, Python version)
+
 Command logging to a separate text file
+
 Configurable websites and applications via a dictionary or config file
+
 Help command linked to an external help.txt file
+
 Open folders (Documents, Downloads)
+
 Shutdown / restart commands with confirmation prompts
 
 Error handling for safer execution
