@@ -40,20 +40,15 @@ class WindowsAssistant(ctk.CTk):
 
         response = ""
 
-        # Command: create folder
-        if any(x in user_text for x in ["folder", "mkdir", "create folder"]):
-            os.system('mkdir "%USERPROFILE\\Desktop\\New_Folder"')
-            response = "I created a new folder on Desktop"
-
-        # Command: open Google
-        elif any(x in user_text for x in ["browser", "google", "internet"]):
-            webbrowser.open("https://www.google.com")
-            response = "I opened the browser on www.google.com"
+        elif any(x in user_text for x in ["google", "internet", "browser", "chrome", "brave", "edge"]):
+            response = open_links(user_text)
 
         # Command: open YouTube
         elif any(x in user_text for x in ["yt", "youtube", "ytb"]):
-            webbrowser.open("https://www.youtube.com")
-            response = "Open YouTube! Enjoy watching!"
+            response = open_links(user_text)
+
+        elif "github" in user_text:
+            response = open_links(user_text)
 
         else:
             response = "I can't understand this command, check the documentation for available commands!"
