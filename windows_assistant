@@ -1,0 +1,66 @@
+import customtkinter as ctk
+import os
+import webbrowser
+import subprocess
+
+
+class WindowsAssistant(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+
+        self.title("Windows Assistant v1.0")
+        self.geometry("600x450")
+        ctk.set_appearance_mode("dark")
+
+        self.chat_box = ctk.CTkTextbox(self, state="disabled", font=("Arial", 12))
+        self.chat_box.pack(padx=20, pady=20, fill="both", expand=True)
+
+        self.entry = ctk.CTkEntry(
+            self,
+            placeholder_text="Ask something (ex. Create a folder, open google, turn on the bluetooth etc)..."
+        )
+        self.entry.pack(padx=20, pady=(0, 20), fill="x")
+        self.entry.bind("<Return>", lambda e: self.process_input())
+
+        self.log("Assistant", "Hello! I'm your Windows assistant. How can I help you today?")
+        self.log("Assistant", "Check the documentation to see what I can do.")
+
+    def log(self, role, text):
+        self.chat_box.configure(state="normal")
+        self.chat_box.insert("end", f"{role}: {text}\n\n")
+        self.chat_box.configure(state="disabled")
+
+    def process_input(self):
+        user_text = self.entry.get().lower().strip()
+        if not user_text:
+            return
+
+        self.log("TU", user_text)
+        self.entry.delete(0, "end")
+
+        response = ""
+
+        # Command: create folder
+        if any(x in user_text for x in ["folder", "mkdir", "create folder"]):
+            os.system('mkdir "%USERPROFILE\\Desktop\\New_Folder"')
+            response = "I created a new folder on Desktop"
+
+        # Command: open Google
+        elif any(x in user_text for x in ["browser", "google", "internet"]):
+            webbrowser.open("https://www.google.com")
+            response = "I opened the browser on www.google.com"
+
+        # Command: open YouTube
+        elif any(x in user_text for x in ["yt", "youtube", "ytb"]):
+            webbrowser.open("https://www.youtube.com")
+            response = "Open YouTube! Enjoy watching!"
+
+        else:
+            response = "I can't understand this command, check the documentation for available commands!"
+
+        self.log("Assistant", response)
+
+
+if __name__ == "__main__":
+    app = WindowsAssistant()
+    app.mainloop()
