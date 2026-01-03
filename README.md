@@ -31,7 +31,7 @@ open youtube → opens YouTube in the default browser
 
 help → displays available commands (planned)
 
-##🔮 Future Updates
+## 🔮 Future Updates
 
 Planned features to make the assistant more useful and professional:
 Open more applications (Notepad, Calculator, VS Code, etc.)
