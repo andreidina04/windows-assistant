@@ -20,7 +20,7 @@ This assistant can perform basic system tasks, open websites, and interact with 
 
 - Python 3  
 - [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) for GUI  
-- `os`, `subprocess`, `webbrowser` modules for Windows interaction  
+- `os`, `subprocess`, `webbrowser`, `platform` `pathlib` modules for Windows interaction  
 ## 📂 Commands
 
 Some example commands:
