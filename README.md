@@ -9,10 +9,11 @@ This assistant can perform basic system tasks, open websites, and interact with 
 
 - Chat-style interface with GUI (CustomTkinter)  
 - Create a folder on the Desktop  
-- Open websites like Google and YouTube  
+- Open websites like Google, Youtube and GitHub 
 - Real-time command logging in the chat box  
 - Placeholder for help/documentation  
-
+- Buttons for shutting down and restarting the PC
+- Buttons for clearing chat and accessing Task Manager
 ---
 
 ## 🛠 Technologies Used
@@ -31,6 +32,8 @@ open google → opens Google in the default browser
 
 open youtube → opens YouTube in the default browser
 
+open github → opens GitHub in the default browser
+
 show time → showing current time and date
 
 system info → showing your system information
@@ -42,6 +45,7 @@ quit → quitting the app
 Planned features to make the assistant more useful and professional:
 
 -- Open more applications (Notepad, Calculator, VS Code, etc.)
+
 -- Open folders (Documents, Downloads)
 
 ## 🖼️ Interface
