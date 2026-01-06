@@ -1,57 +1,107 @@
 import customtkinter as ctk
 import os
 import webbrowser
-import subprocess
-
+import platform
+from commands import open_links, create_folder, greetings, close_app, show_time, computer_info
+from help import show_help
+import tkinter.messagebox as msgbox
+import datetime
 
 class WindowsAssistant(ctk.CTk):
+
     def __init__(self):
         super().__init__()
-
         self.title("Windows Assistant v1.0")
-        self.geometry("600x450")
+        self.geometry("700x550")
         ctk.set_appearance_mode("dark")
-
+        self.configure(fg_color="#2E2A2A")
         self.chat_box = ctk.CTkTextbox(self, state="disabled", font=("Arial", 12))
         self.chat_box.pack(padx=20, pady=20, fill="both", expand=True)
 
-        self.entry = ctk.CTkEntry(
-            self,
-            placeholder_text="Ask something (ex. Create a folder, open google, turn on the bluetooth etc)..."
-        )
+        self.entry = ctk.CTkEntry(self,placeholder_text="Type a command (ex: open google, system info, time)...")
         self.entry.pack(padx=20, pady=(0, 20), fill="x")
         self.entry.bind("<Return>", lambda e: self.process_input())
-
+        self.buttons_frame = ctk.CTkFrame(self, fg_color="#2E2A2A")
+        self.buttons_frame.pack(pady=(10, 25))
+        self.clearbutton = ctk.CTkButton(self.buttons_frame, text = "Clear Chat", command=self.clear_chat, fg_color = "#5853C2", text_color = "white", font=("Arial", 12, "bold"), hover_color="#6A5ACD")
+        self.clearbutton.pack(side ="left", padx=10, pady=(0,0))
+        self.shutdownbutton = ctk.CTkButton(self.buttons_frame, text = "Shutdown", command=self.shut_down, fg_color = "#E04141", text_color = "white", font=("Arial", 12, "bold"), hover_color="#AD2D2D")
+        self.shutdownbutton.pack(side = "left", padx=10, pady=(0,0))
+        self.restartbutton = ctk.CTkButton(self.buttons_frame, text = "Restart", command=self.restart_pc, fg_color = "#327D4F", text_color = "white", font=("Arial", 12, "bold"), hover_color="#298A59")
+        self.restartbutton.pack(side = "left", padx=10, pady=(0,0))
+        self.taskmgrbutton = ctk.CTkButton(self.buttons_frame, text="Task Manager", command=self.taskmgr, fg_color="#309EC2", text_color="white", font=("Arial", 12, "bold"), hover_color="#398096")
+        self.taskmgrbutton.pack(side="left", padx=10, pady=(0, 0))
+        self.log("SYSTEM", "Type 'help' to check all the available commands.")
         self.log("Assistant", "Hello! I'm your Windows assistant. How can I help you today?")
-        self.log("Assistant", "Check the documentation to see what I can do.")
 
     def log(self, role, text):
-        self.chat_box.configure(state="normal")
+        self.chat_box.configure(state="normal", fg_color="#121010", font=("Arial", 13))
         self.chat_box.insert("end", f"{role}: {text}\n\n")
         self.chat_box.configure(state="disabled")
+        self.chat_box.see("end")
 
+    def clear_chat(self):
+        self.chat_box.configure(state="normal")
+        self.chat_box.delete("1.0", "end")
+        self.chat_box.configure(state="disabled")
+
+    def taskmgr(self):
+        os.system("taskmgr")
+    def shut_down(self):
+        confirm = msgbox.askyesno(title="Confirm Shutdown",message="Are you sure you want to shut down your PC?")
+        if confirm:
+            self.log("SYSTEM", "Shutting down the PC...")
+            os.system("shutdown /s /t 5")
+        else:
+            self.log("Assistant", "Shutdown cancelled.")
+
+    def restart_pc(self):
+        confirm = msgbox.askyesno(title="Confirm Restarting",message="Are you sure you want to restart your PC?")
+        if confirm:
+            self.log("SYSTEM", "Restarting the PC...")
+            os.system("shutdown /r /t 5")
+        else:
+            self.log("Assistant", "Restarting cancelled.")
     def process_input(self):
         user_text = self.entry.get().lower().strip()
         if not user_text:
             return
 
-        self.log("TU", user_text)
+        self.log("YOU", user_text)
         self.entry.delete(0, "end")
 
         response = ""
 
+        if any(x in user_text for x in ["folder", "mkdir", "create folder"]):
+            response = create_folder(user_text)
+
         elif any(x in user_text for x in ["google", "internet", "browser", "chrome", "brave", "edge"]):
             response = open_links(user_text)
 
-        # Command: open YouTube
         elif any(x in user_text for x in ["yt", "youtube", "ytb"]):
             response = open_links(user_text)
 
         elif "github" in user_text:
             response = open_links(user_text)
 
+        elif "help" in user_text:
+            response = show_help(user_text)
+
+        elif "quit" in user_text:
+            response = close_app(user_text)
+            app.after(1500, exit)
+
+        elif any(x in user_text for x in ["thanks", "thank you", "thank", "ty", "thx"]):
+            response = greetings(user_text)
+
+        elif any(x in user_text for x in ["time", "date", "hour", "clock", "seconds"]):
+            response = show_time(user_text)
+
+        elif "system info" in user_text:
+            response = computer_info(user_text)
+
         else:
-            response = "I can't understand this command, check the documentation for available commands!"
+            response = "I can't understand this command, try 'help' for available commands!"
 
         self.log("Assistant", response)
 
