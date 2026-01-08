@@ -27,17 +27,32 @@ def open_links(user_text):
 
 
 def create_folder(user_text):
-    folder_keywords = ["create folder", "folder", "directory", "mkdir"]
+    folder_keywords = ["create folder", "directory", "mkdir"]
     extracted_text = user_text.lower()
     for word in folder_keywords:
         extracted_text = extracted_text.replace(word, "")
     folder_name = extracted_text.strip()
     if not folder_name:
-        return "Please specify a name. Example: 'folder MyProject'"
+        return "Please use the command 'create folder folder_name'"
     try:
         desktop_path = Path.home() / "Desktop" / folder_name
         desktop_path.mkdir(parents=True, exist_ok=True)
         return f"Created the folder '{folder_name}' on Desktop for you!"
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+def create_file(user_text):
+    folder_keywords = ["create file", "file"]
+    extracted_text = user_text.lower()
+    for word in folder_keywords:
+        extracted_text = extracted_text.replace(word, "")
+    file_name = extracted_text.strip()
+    if not file_name:
+        return "Please use the command 'create file file_name'"
+    try:
+        file_path = Path.home() / "Desktop" / file_name
+        file_path.touch()
+        return f"Created the file '{file_name}' on Desktop for you!"
     except Exception as e:
         return f"Error: {str(e)}"
 
