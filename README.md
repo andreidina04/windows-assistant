@@ -28,6 +28,8 @@ help → displays available commands
 
 create folder → creates a folder on Desktop
 
+create file → creates a file on Desktop
+
 open google → opens Google in the default browser
 
 open youtube → opens YouTube in the default browser
