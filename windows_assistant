@@ -2,7 +2,7 @@ import customtkinter as ctk
 import os
 import webbrowser
 import platform
-from commands import open_links, create_folder, greetings, close_app, show_time, computer_info
+from commands import open_links, create_folder, greetings, close_app, show_time, computer_info, create_file
 from help import show_help
 import tkinter.messagebox as msgbox
 import datetime
@@ -72,7 +72,7 @@ class WindowsAssistant(ctk.CTk):
 
         response = ""
 
-        if any(x in user_text for x in ["folder", "mkdir", "create folder"]):
+        if "create folder" in user_text:
             response = create_folder(user_text)
 
         elif any(x in user_text for x in ["google", "internet", "browser", "chrome", "brave", "edge"]):
@@ -99,6 +99,9 @@ class WindowsAssistant(ctk.CTk):
 
         elif "system info" in user_text:
             response = computer_info(user_text)
+
+        elif "create file" in user_text:
+            response = create_file(user_text)
 
         else:
             response = "I can't understand this command, try 'help' for available commands!"
