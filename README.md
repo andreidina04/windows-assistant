@@ -9,7 +9,8 @@ This assistant can perform basic system tasks, open websites, and interact with 
 
 - Chat-style interface with GUI (CustomTkinter)  
 - Create a folder on the Desktop  
-- Open websites like Google, Youtube and GitHub 
+- Open websites like Google, Youtube and GitHub
+- Open Windows applications
 - Real-time command logging in the chat box  
 - Placeholder for help/documentation  
 - Buttons for shutting down and restarting the PC
@@ -24,29 +25,29 @@ This assistant can perform basic system tasks, open websites, and interact with 
 ## 📂 Commands
 
 Some example commands:
-help → displays available commands
+`help` → displays available commands
 
-create folder → creates a folder on Desktop
+`create folder` → creates a folder on Desktop
 
-create file → creates a file on Desktop
+`create file` → creates a file on Desktop
 
-open google → opens Google in the default browser
+`open app_name` → opens the specified application
 
-open youtube → opens YouTube in the default browser
+`open google` → opens Google in the default browser
 
-open github → opens GitHub in the default browser
+`open youtube` → opens YouTube in the default browser
 
-show time → showing current time and date
+`open github` → opens GitHub in the default browser
 
-system info → showing your system information
+`show time` → showing current time and date
 
-quit → quitting the app
+`system info` → showing your system information
+
+`quit` → quitting the app
 
 ## 🔮 Future Updates
 
 Planned features to make the assistant more useful and professional:
-
--- Open more applications (Notepad, Calculator, VS Code, etc.)
 
 -- Open folders (Documents, Downloads)
 
@@ -56,6 +57,7 @@ Planned features to make the assistant more useful and professional:
 <img width="695" height="577" alt="Screenshot 2026-01-06 103011" src="https://github.com/user-attachments/assets/1a0c12ec-0fda-4e06-b772-ddae575551b1" />
 <img width="700" height="578" alt="Screenshot 2026-01-06 103024" src="https://github.com/user-attachments/assets/f7e33757-f660-423d-9d4b-345b97539d42" />
 <img width="698" height="581" alt="Screenshot 2026-01-06 103127" src="https://github.com/user-attachments/assets/f8e72f5d-cb60-414f-8a22-810bac49b87b" />
+<img width="1183" height="616" alt="image" src="https://github.com/user-attachments/assets/89a582e8-9ee5-43de-8066-eb990824b7ca" />
 <img width="694" height="575" alt="image" src="https://github.com/user-attachments/assets/5674cf90-b238-46af-94a6-579e6b6556ea" />
 
 
