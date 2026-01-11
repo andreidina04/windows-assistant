@@ -4,6 +4,7 @@ import subprocess
 import datetime
 from pathlib import Path
 import platform
+from AppOpener import open, close
 
 def open_links(user_text):
     websites = {"google": "https://www.google.com",
@@ -14,7 +15,7 @@ def open_links(user_text):
             webbrowser.open(url)
             return f"Opened {key.capitalize()}! Enjoy!"
 
-    browser_keywords = ["browser", "chrome", "google", "internet", "brave", "edge"]
+    browser_keywords = ["browser", "internet"]
     if any(word in user_text for word in browser_keywords):
         webbrowser.open("https://www.google.com")
         return f"Opened the browser for you!"
@@ -55,6 +56,13 @@ def create_file(user_text):
         return f"Created the file '{file_name}' on Desktop for you!"
     except Exception as e:
         return f"Error: {str(e)}"
+
+def open_app(user_text):
+    global app_name
+    if "open" in user_text:
+        app_name = user_text.replace("open", "")
+        open(app_name, match_closest = True)
+    return "Opening" + app_name.capitalize() + " for you."
 
 def greetings(user_text):
         return "Glad to help! Everytime when you need me I'm here."
