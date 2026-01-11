@@ -2,7 +2,7 @@ import customtkinter as ctk
 import os
 import webbrowser
 import platform
-from commands import open_links, create_folder, greetings, close_app, show_time, computer_info, create_file
+from commands import open_links, create_folder, greetings, close_app, show_time, computer_info, create_file, open_app
 from help import show_help
 import tkinter.messagebox as msgbox
 import datetime
@@ -55,6 +55,7 @@ class WindowsAssistant(ctk.CTk):
         else:
             self.log("Assistant", "Shutdown cancelled.")
 
+
     def restart_pc(self):
         confirm = msgbox.askyesno(title="Confirm Restarting",message="Are you sure you want to restart your PC?")
         if confirm:
@@ -75,7 +76,7 @@ class WindowsAssistant(ctk.CTk):
         if "create folder" in user_text:
             response = create_folder(user_text)
 
-        elif any(x in user_text for x in ["google", "internet", "browser", "chrome", "brave", "edge"]):
+        elif any(x in user_text for x in ["internet", "browser"]):
             response = open_links(user_text)
 
         elif any(x in user_text for x in ["yt", "youtube", "ytb"]):
@@ -102,7 +103,8 @@ class WindowsAssistant(ctk.CTk):
 
         elif "create file" in user_text:
             response = create_file(user_text)
-
+        elif "open" in user_text:
+            response = open_app(user_text)
         else:
             response = "I can't understand this command, try 'help' for available commands!"
 
