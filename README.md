@@ -1,14 +1,14 @@
-# 🪟 Windows Assistant v1.0 (Beta)
+# 🪟 Windows Assistant v1.0
 
 A simple desktop assistant for Windows, built with Python and CustomTkinter.  
-This assistant can perform basic system tasks, open websites, and interact with desktop applications using simple commands.
+This assistant can perform basic system tasks like opening websites, and interact with desktop applications using simple commands.
 
 ---
 
 ## 🚀 Features
 
 - Chat-style interface with GUI (CustomTkinter)  
-- Create a folder on the Desktop  
+- Create a folder or a file on the Desktop  
 - Open websites like Google, Youtube and GitHub
 - Open Windows applications
 - Real-time command logging in the chat box  
